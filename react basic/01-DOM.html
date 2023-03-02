@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script>
+        let parag = document.createElement('p')
+        parag.textContent = 'Paragrafo'
+
+        const root = document.getElementById('root')
+        root.appendChild(parag)
+
+        const newDiv = document.createElement('div')
+        newDiv.textContent = 'Nova Div'
+        newDiv.style.border = '3px solid green'
+        newDiv.style.padding = '10px'
+        newDiv.style.marginBottom = '20px'
+        newDiv.style.maxWidth = '100px'
+        newDiv.style.textAlign = 'center'
+        newDiv.style.backgroundColor = 'green'
+        newDiv.style.color = 'white'
+        newDiv.style.borderRadius = '30px'
+
+        root.appendChild(newDiv)
+    </script>
+</body>
+</html>
