@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sauda {
+            background-color: indigo;
+            border-radius: 8p;
+            color: white;
+            box-shadow: 5px 5px 12px rgb(26, 26, 26);
+            padding: 12px;
+            text-align: center;
+            font-family: Cambria, "Times New Roman", serif;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        /*function Saudacao({nome, msg}){
+            return <div className="sauda"> {msg}, {nome}!</div>
+        }*/
+        const Saudacao = ({msg, nome}) => <div className="sauda"> {msg}, {nome}!</div>
+        const saudacao1 = Saudacao({msg: 'Bom Dia', nome: 'Miguel'})
+        const saudacao2 = <Saudacao msg="Bom Noite" nome="Bruno"/>
+        const container = <>{saudacao1}{saudacao2}</>
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        root.render(container)
+    </script>
+</body>
+</html>
