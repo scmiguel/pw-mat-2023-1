@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .azul{
+            color: blue;
+            background-color: aliceblue;
+            border: 2px solid lightblue;
+            border-radius: 10px;
+            text-align: center;
+            padding: 5px;
+            margin: 5px;
+        }
+        .red{
+            color: red;
+            background-color: rgba(245, 117, 117, 0.212);
+            border: 2px solid lightcoral;
+            border-radius: 10px;
+            text-align: center;
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <div id="root"></div>
+
+    <script type="text/babel">
+            const Div1 = ({nome, snome, dia, mes, ano, ...props}) => <>
+                <p {...props} className='azul'>Olá {nome} {snome}</p> {/*Paragrafo 1, onde será mostrado nome e sobrenome*/}
+                <p {...props} className='azul'>Data de Nascimento: {dia+'/'+mes+'/'+ano}</p> {/*Paragrafo 2, onde será mostrado data de nascimento*/}
+                <div {...props} className='red'>Idade: {2023-ano}</div>{/*Calculo de idade*/}
+                </>
+
+            const container = 
+            <>
+                <Div1 nome='Miguel' snome='Souza Cintra' dia='15' mes='04' ano='2001' />{/*Passando parametros para os paragrafos e div*/}
+            </>
+
+            const root = ReactDOM.createRoot(document.getElementById('root'))
+            root.render(container)
+    </script>
+</body>
+</html>
