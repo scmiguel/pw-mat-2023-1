@@ -26,7 +26,8 @@
         dolar = dolarRef.current.value
         real = realRef.current.value
 
-        resultRef = parseFloat(real) * parseFloat(dolar)
+        resultado = parseFloat(real) * parseFloat(dolar)
+        resultRef.current.textContent=resultado
       }
 
       return (
@@ -35,18 +36,20 @@
 
           <form>
             <div>
-              <label>
-                <span>Valor Real R$</span><br/>
-                <input type="number" ref={realRef} onChange={handleChange}/>
-              </label>
+              <div>
+                <label>
+                  <span>Valor Real R$</span><br/>
+                  <input type="number" ref={realRef} onChange={handleChange}/>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <span>Cotação do Dolar $</span><br/>
+                  <input type="number" ref={dolarRef} onChange={handleChange}/>
+                </label>
+              </div>
             </div>
-            <div>
-              <label>
-                <span>Cotação do Dolar $</span><br/>
-                <input type="number" ref={dolarRef} onChange={handleChange}/>
-              </label>
-            </div>
-            <div>{resultRef}</div>
+            <div ref={resultRef}/>
           </form>
         </>
       )
