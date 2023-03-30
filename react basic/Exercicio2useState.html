@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 2 useState</title>
+</head>
+<body></body>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <div id="root"></div>
+
+  <script type="text/babel">
+      function Form() {
+
+      const [real, setReal] = React.useState(``)
+      const [dolar, setDolar] = React.useState(``)
+
+      return (
+        <>
+          <h1>Contação</h1>
+
+          <form>
+            <div>
+              <label>
+                <span>Valor Real R$</span><br/>
+                <input type="number" onChange={event => setReal(event.target.value)} value={real}/>
+              </label>
+            </div>
+            <div>
+              <label>
+                <span>Valor Dolar R$</span><br/>
+                <input type="number" onChange={event => setDolar(event.target.value)} value={dolar}/>
+              </label>
+            </div>
+            <div>{real*dolar}</div>
+          </form>
+        </>
+      )
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById('root'))
+      root.render(<Form/>)
+  </script>
+</body>
+</html>

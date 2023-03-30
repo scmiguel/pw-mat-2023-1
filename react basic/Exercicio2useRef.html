@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 2 useRef</title>
+</head>
+<body></body>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <div id="root"></div>
+
+  <script type="text/babel">
+      function Form() {
+
+      let real, dolar, resultado
+
+      const dolarRef = React.useRef()
+      const realRef = React.useRef()
+      const resultRef = React.useRef()
+
+      function handleChange() {
+        dolar = dolarRef.current.value
+        real = realRef.current.value
+
+        resultRef = parseFloat(real) * parseFloat(dolar)
+      }
+
+      return (
+        <>
+          <h1>Contação</h1>
+
+          <form>
+            <div>
+              <label>
+                <span>Valor Real R$</span><br/>
+                <input type="number" ref={realRef} onChange={handleChange}/>
+              </label>
+            </div>
+            <div>
+              <label>
+                <span>Cotação do Dolar $</span><br/>
+                <input type="number" ref={dolarRef} onChange={handleChange}/>
+              </label>
+            </div>
+            <div>{resultRef}</div>
+          </form>
+        </>
+      )
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById('root'))
+      root.render(<Form/>)
+  </script>
+</body>
+</html>
