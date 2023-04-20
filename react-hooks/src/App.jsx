@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Exercicio01 from './exercicios/01';
 
 function App() {
   return (
