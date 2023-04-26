@@ -36,18 +36,19 @@ function Display({name}) {
    return <div>{`Hey ${name}, you are great!`}</div>
 }
 
-function App() {
+function Exercicio03() {
   // 🐨 adicione um useState para o animal
   const [name, setName] = React.useState('')
+  const [animal, setAnimal] = React.useState('')
   return (
     <form>
       <Name name={name} onNameChange={event => setName(event.target.value)} />
       {/* 🐨 passe o animal e a prop onAnimalChange aqui (similar ao componente Name acima) */}
-      <FavoriteAnimal />
+      <FavoriteAnimal animal={animal} onNameChange={event => setAnimal(event.target.value)}/>
       {/* 🐨 passe a prop do animal aqui */}
       <Display name={name} />
     </form>
   )
 }
 
-export default App
+export default Exercicio03

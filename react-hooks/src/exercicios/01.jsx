@@ -1,11 +1,12 @@
 import * as React from 'react'
 
 function Greeting({initialName}) {
-  const [name, setName] = React.useState(
-    ()=>{window.localStorage.setItem('name') ?? initialName
-})
+  // 💣 exclua esta declaração de variável e troque por uma chamada a React.useState
+  //const name = ''
+  const [name, setName] = React.useState(initialName)
 
   function handleChange(event) {
+    // 🐨 atualize o nome aqui baseado em event.target.value
     setName(event.target.value)
   }
 
@@ -25,6 +26,7 @@ function Greeting({initialName}) {
 }
 
 function Exercicio01() {
+  //return Greeting({initialName: "Turíbio"})
   return <Greeting initialName="Turíbio" />
 }
 
