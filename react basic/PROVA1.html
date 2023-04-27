@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROVA 1 &bull; Programação Web 2023/1</title>
+  <style>
+        * {
+            font-family: Calibri, Arial, sans-serif;
+        }
+        body {
+            background: cornflowerblue;
+            background: linear-gradient(0deg, cornflowerblue 0%, navy 100%);
+            height: 100vh;
+        }
+        main {
+            margin: 5%;
+            background-color: white;
+            padding: 25px;
+            border-radius: 25px;
+            box-shadow: 5px 5px rgba(250, 250, 250, 0.2);
+        }
+        h1 {
+            color: cornflowerblue;
+            text-shadow: 2px 2px rgba(0, 100, 0, 0.2);
+            text-align: center;
+        }
+        label span {
+            display: block;
+        }
+        .input-set, .result {
+            margin: 15px auto;
+            padding: 10px;
+            width: 50%;
+            text-align: center;
+        }
+        .input-set label {
+            display: block;
+            color: cornflowerblue
+        }
+        .result {
+            background-color: cornflowerblue;
+            color: white;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <div id="root"></div>
+
+  <script type="text/babel">
+
+    function Page() {
+
+            /*
+                1. Declare duas variável de estado:
+                   - uma para armazenar o valor do input "nota1"
+                   - uma para armazenar o valor do input "nota2"
+
+                2. Declare uma única função para manipular os eventos onChange de ambos
+                   os inputs. Dentro dessa função, atualize o valor das variáveis de 
+                   estado nota1 e nota2 com o valor dos respectivos inputs.
+
+                3. Declare uma função que retorne a média da nota, sendo que a primeira
+                   nota tem peso 4 e a segunda nota tem peso 6. Logo abaixo,
+                   já fora da função, declare uma variável comum que receba o valor retornado
+                   por uma chamada a essa função (estado calculado).
+
+                4. Declare uma segunda função que determine e retorne a situação do aluno, 
+                   a saber:
+                   - Média maior que 6: APROVADO
+                   - Média entre 4,5 e 6: RECUPERAÇÃO
+                   - Média menor que 4,5: REPROVADO
+                   Logo abaixo da função, declare uma variável comum que receba o valor retornado
+                   por uma chamada à segunda função (estado calculado).
+                
+                5. Transforme os dois inputs em componentes controlados.
+
+                5. Exiba o valor das variáveis de estado calculado nos locais apropriados.
+
+                6. Comente os principais trechos do seu código.
+
+                Após terminar, anexe sua prova no Teams.
+
+                O horário limite é 9h20.
+
+                Boa prova!
+            */
+
+            const [nota1, setNota1] = React.useState('')
+            const [nota2, setNota2] = React.useState('')
+            //Estados Calculados
+            let media = calcMedia()
+            let situacao = Aprov()
+
+            //Manipulação de Eventos
+            function handleChange(event) {
+                if(event.target.name === 'nota1') setNota1(event.target.value)
+                else setNota2(event.target.value)
+            }
+            //Calculo da Media com pesos das notas
+            function calcMedia(){
+                return (4*Number(nota1)+6*Number(nota2))/10
+            }
+            //Verificando media para aprovação
+            function Aprov(){
+                if(media > 6) return 'APROVADO'
+                else if(media >= 4.5 && media <= 6) return 'RECUPERAÇÃO'
+                else return 'REPROVADO'
+            }
+
+            return (<main>
+                <h1>Cálculo de notas</h1>
+
+                <div id="container">
+                    <div className="input-set">
+                        <label>
+                            <span>Nota 1º bimestre</span>
+                            <input name="nota1" type="number" onChange={handleChange} value={nota1}/>
+                        </label>
+                    </div>
+
+                    <div className="input-set">
+                        <label>
+                            <span>Nota 2º bimestre</span>
+                            <input name="nota2" type="number" onChange={handleChange} value={nota2}/>
+                        </label>
+                    </div>
+
+                    <div className="result">
+                        <div>Média: {media}</div>
+                        <div>Situação: {situacao}</div>
+                    </div>
+                </div>
+            </main>)
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        root.render(<Page />)
+
+  </script>
+</body>
+</html>
