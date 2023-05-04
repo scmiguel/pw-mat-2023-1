@@ -7,7 +7,7 @@ import Exercicio03 from './exercicios/03'
 import Exercicio04 from './exercicios/04'
 import Exercicio05 from './exercicios/05'
 import Exercicio06 from './exercicios/06'
-import Home from './pages/Home'
+import Home from './pages/home.jsx'
 
 function App() {
 

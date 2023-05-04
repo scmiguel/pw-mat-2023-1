@@ -8,10 +8,12 @@ import {PokemonForm, fetchPokemon, PokemonInfoFallback, PokemonDataView} from '.
 
 function PokemonInfo({pokemonName}) {
   // 🐨 crie o estado para o pokémon (null)
-  const [pokemon, setPokemon] = React.useState(null)
-  const [error, setError] = React.useState(null)
-  const [status, setStatus] = React.useState('idle')  // Aguardando informações
+  // const [pokemon, setPokemon] = React.useState(null)
+  // const [error, setError] = React.useState(null)
+  // const [status, setStatus] = React.useState('idle')
+  const [state, setState] = React.useState({pokemon: null, error: null, status: 'idle'})
 
+  const{pokemon, error, status} = state 
   // 🐨 crie React.useEffect de modo a ser chamado sempre que pokemonName mudar.
   // 💰 NÃO SE ESQUEÇA DO VETOR DE DEPENDÊNCIAS!
   React.useEffect(() => {
@@ -22,8 +24,7 @@ function PokemonInfo({pokemonName}) {
 
     // 🐨 antes de chamar `fetchPokemon`, limpe o estado atual do pokemon
     // ajustando-o para null.
-    setPokemon(null)
-    setError(null)
+    setState({pokemon: null, error: null, status: 'pending'})
 
     // (Isso é para habilitar o estado de carregamento ao alternar entre diferentes
     // pokémon.)
@@ -31,20 +32,13 @@ function PokemonInfo({pokemonName}) {
     //   fetchPokemon('Pikachu').then(
     //     pokemonData => {/* atualize todos os estados aqui */},
     //   )
-    setStatus('pending')  // Requisição feita, aguardando desfecho
-    fetchPokemon(pokemonName).then(   // Requisição deu certo
-      pokemonData => {
-        setPokemon(pokemonData)
-        setStatus('resolved')     // Promessa cumprida
-      }
-    )
-    .catch( // Requisição deu errado
-      error => {
-        setError(error)
-        setStatus('rejected')     // Promessa frustrada
-      }
-    )
-
+    // setStatus('pending')  // Requisição feita, aguardando desfecho
+    fetchPokemon(pokemonName).then( pokemonData => { 
+    //   setPokemon(pokemonData),setStatus('resolved')})
+      setState({...state, pokemon: pokemonData, status: 'resolved'})})
+    .catch( error => {
+      // setError(error), setStatus('rejected')})
+      setState({...state, error: error, status: 'rejected'})})
   }, [pokemonName])
 
   // useEffect para contagem de atualizações
@@ -61,14 +55,11 @@ function PokemonInfo({pokemonName}) {
   switch(status) {
     case 'idle':
       return 'Informe um pokémon'
-
     case 'pending':
       return <PokemonInfoFallback name={pokemonName} />
-
     case 'resolved':
       return <PokemonDataView pokemon={pokemon} />
-
-    default:  // rejected
+    default:
       return (
         <div role="alert">
           Houve um erro:
