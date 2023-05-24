@@ -8,6 +8,7 @@ import theme from './utils/theme'
 import { ThemeProvider, Box, CssBaseline } from '@mui/material'
 import FooterBar from './components/ui/footerbar'
 import HomePage from './pages/HomePage'
+import CustomersList from './pages/CustomersList';
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
             <Box sx={{margin: '25px 25px 55px 25px' }}>
               <Routes>
                 <Route path='/' element={<HomePage/>}/>
+              </Routes>
+              <Routes>
+                <Route path='/customers' element={<CustomersList/>}/>
               </Routes>
             </Box>
             <FooterBar />
