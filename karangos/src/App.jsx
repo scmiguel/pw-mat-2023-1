@@ -8,8 +8,10 @@ import theme from './utils/theme'
 import { ThemeProvider, Box, CssBaseline } from '@mui/material'
 import FooterBar from './components/ui/footerbar'
 import HomePage from './pages/HomePage'
-import CustomersList from './pages/CustomersList';
-import CustomersForm from './pages/CustomersForms';
+import CustomersList from './pages/CustomersList'
+import CustomersForm from './pages/CustomersForms'
+import CarsList from './pages/CarsList'
+import CarsForm from './pages/CarsForms'
 import './App.css'
 
 function App() {
@@ -26,6 +28,9 @@ function App() {
                 <Route path='/customers' element={<CustomersList/>}/>
                 <Route path='/customers/new' element={<CustomersForm/>}/>
                 <Route path='/customers/:id' element={<CustomersForm/>}/>
+                <Route path='/cars' element={<CarsList/>}/>
+                <Route path='/cars/new' element={<CarsForm/>}/>
+                <Route path='/cars/:id' element={<CarsForm/>}/>
               </Routes>
             </Box>
             <FooterBar />
