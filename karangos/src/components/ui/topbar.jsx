@@ -11,7 +11,9 @@ export default function TopBar() {
       <AppBar position="static" enableColorOnDark>
         <Toolbar variant="dense">
             <MainMenu/>
-          <img src={logo} alt="Logotipo Karangos" style={{ width: '300px' }} />
+            <a href="/">
+              <img src={logo} alt="Logotipo Karangos" style={{ width: '300px' }} />
+            </a>
         </Toolbar>
       </AppBar>
     </Box>
