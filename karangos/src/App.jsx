@@ -12,6 +12,7 @@ import CustomersList from './pages/CustomersList'
 import CustomersForm from './pages/CustomersForms'
 import CarsList from './pages/CarsList'
 import CarsForm from './pages/CarsForms'
+import Autor from './pages/Autor'
 import './App.css'
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
                 <Route path='/cars' element={<CarsList/>}/>
                 <Route path='/cars/new' element={<CarsForm/>}/>
                 <Route path='/cars/:id' element={<CarsForm/>}/>
+                <Route path='/autor' element={<Autor/>}/>
               </Routes>
             </Box>
             <FooterBar />
